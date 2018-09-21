@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import java.util.Random;
 
 public class Brain
@@ -26,8 +27,7 @@ public class Brain
 	
 	public String doTime()
 	{
-		return null;
-		// your code goes here
+		return new Date().toString();
 	}
 	
 }
