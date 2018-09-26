@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import model.Brain;
 
 /**
- * Servlet implementation class Time
+ * Servlet implementation class Db
  */
-@WebServlet("/Time.do")
-public class Time extends HttpServlet {
+@WebServlet("/Db.do")
+public class Db extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Time() {
+    public Db() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,23 +30,22 @@ public class Time extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		if (request.getParameter("calc") == null)
 		  {
-		     this.getServletContext().getRequestDispatcher("/Time.html").forward(request, response);
+		     this.getServletContext().getRequestDispatcher("/Db.html").forward(request, response);
 		  }
 		  else
 		  {
 		     Brain model = new Brain();
 		     try
 		     {
-		        String time = model.doTime();
+		    	String input = request.getParameter("digits");
+		        //String prime = model.doDb(input);
 		        response.setContentType("text/html");
 		        Writer out = response.getWriter();
 		        String html = "<html><body>";
 		        html += "<p><a href='Dash.do'>Back to Dashboard</a></p>";
-		        html += "<p>Server Time: " + time + "</p>";
+		       // html += "<p>Item: " + prime + "</p>";
 		        html += "</body></html>";
 		        out.write(html);
 		     }
@@ -55,7 +54,7 @@ public class Time extends HttpServlet {
 		        response.setContentType("text/html");
 		        Writer out = response.getWriter();
 		        String html = "<html><body>";
-		        html += "<p><a href=' Dash.do'>Back to Dashboard</a></p>";
+		        html += "<p><a href='Dash.do'>Back to Dashboard</a></p>";
 		        html += "<p>Error " + e.getMessage() + "</p>";
 		        out.write(html);
 		     }
