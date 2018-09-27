@@ -12,40 +12,39 @@ import javax.servlet.http.HttpServletResponse;
 import model.Brain;
 
 /**
- * Servlet implementation class Db
+ * Servlet implementation class Http
  */
-@WebServlet("/Db.do")
-public class Db extends HttpServlet {
+@WebServlet("/Http.do")
+public class Http extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Db() {
+    
+    public Http() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("calc") == null)
 		  {
-		     this.getServletContext().getRequestDispatcher("/Db.html").forward(request, response);
+		     this.getServletContext().getRequestDispatcher("/Http.html").forward(request, response);
 		  }
 		  else
 		  {
 		     Brain model = new Brain();
 		     try
 		     {
-		    	String input = request.getParameter("itemno");
-		        String prime = model.doDb(input);
+		    	String country = request.getParameter("country");
+		    	String query = request.getParameter("query");
+		        String countryQuery = model.doHttp(country, query);
 		        response.setContentType("text/html");
 		        Writer out = response.getWriter();
 		        String html = "<html><body>";
 		        html += "<p><a href='Dash.do'>Back to Dashboard</a></p>";
-		        html += "<p>Item: " + prime + "</p>";
+		        html += "<b>Country Data:</b>";
+		        html += "<br>";
+		        html += "<code>" + countryQuery + "</code>";
 		        html += "</body></html>";
 		        out.write(html);
 		     }
@@ -68,5 +67,6 @@ public class Db extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 
 }
