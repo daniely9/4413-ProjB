@@ -36,9 +36,6 @@ public class Dash extends HttpServlet {
 		  {
 		     this.getServletContext().getRequestDispatcher("/Dash.html").forward(request, response);
 		  }
-		  else
-		  {
-		  }
 	}
 
 	/**
