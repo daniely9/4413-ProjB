@@ -107,10 +107,8 @@ public class Brain {
 		StringReader reader = new StringReader(result);
 	    StringWriter writer = new StringWriter();
 	    TransformerFactory tFactory = TransformerFactory.newInstance();
-	    Transformer transformer = tFactory.newTransformer(new javax.xml.transform.stream.StreamSource("Documents/EECS4413/ProjB/Roster.xsl"));
-
+	    Transformer transformer = tFactory.newTransformer(new javax.xml.transform.stream.StreamSource("Documents/EECS4413/ProjB/WebContent/Roster.xsl"));
 	    transformer.transform(new javax.xml.transform.stream.StreamSource(reader), new javax.xml.transform.stream.StreamResult(writer));
-
 	    //System.out.println(writer.toString());
 		return writer.toString();
 	}
