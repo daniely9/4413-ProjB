@@ -41,12 +41,20 @@ public class Time extends HttpServlet {
 		     Brain model = new Brain();
 		     try
 		     {
-		        String time = model.doTime();
+		    	String x = request.getParameter("digits");
+		        String time = model.doTime(x);
+		        String[] times = time.split("\\n");
+		        String firstTime = times[0];
+		        String secondTime = times[1];
 		        response.setContentType("text/html");
 		        Writer out = response.getWriter();
 		        String html = "<html><body>";
 		        html += "<p><a href='Dash.do'>Back to Dashboard</a></p>";
-		        html += "<p>Server Time: " + time + "</p>";
+		        html += "Server Time:";
+		        html += "<br>";
+		        html += firstTime;
+		        html += "<br>";
+		        html += secondTime;
 		        html += "</body></html>";
 		        out.write(html);
 		     }

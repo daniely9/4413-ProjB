@@ -2,7 +2,6 @@ package ctrl;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.net.URI;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
